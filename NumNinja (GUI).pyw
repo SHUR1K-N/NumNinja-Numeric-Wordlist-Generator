@@ -10,29 +10,29 @@ minunit = 0; maxunit = 0; YN = 0
 ########## Method Elements ###########
 
 def zeros(num):
-    if (YN in ('y', 'YES', 'Y', 'Yes', 'yes', 1)):
+    if (YN == "1"):
         print()
-        for i in tqdm_gui(range(num, maxunit + 1), desc="Progress: ", unit=" numbers", unit_scale=1):
+        for i in tqdm(range(num, maxunit + 1), desc="Progress", unit=" numbers", unit_scale=1):
             file.write((digitStr + "\n") % num)
             num += 1
-    elif (YN in ('n', 'NO', 'N', 'No', 'no', 0)):
+    elif (YN == "2"):
         while (num <= maxunit):
             file.write((digitStr + "\n") % num)
             num += 1
-    return num
+    return(num)
 
 
 def straight(num):
-    if (YN in ('y', 'YES', 'Y', 'Yes', 'yes', 1)):
+    if (YN == "1"):
         print()
-        for i in tqdm_gui(range(num, maxunit + 1), desc="Progress: ", unit=" numbers", unit_scale=1):
+        for i in tqdm(range(num, maxunit + 1), desc="Progress", unit=" numbers", unit_scale=1):
             file.write("%d\n" % num)
             num += 1
-    elif (YN in ('n', 'NO', 'N', 'No', 'no', 0)):
+    elif (YN == "2"):
         while (num <= maxunit):
             file.write("%d\n" % num)
             num += 1
-    return num
+    return(num)
 
 
 ############## GUI Elements ##############
@@ -156,6 +156,7 @@ while (correctInput is False):
                     start = time.time()
                     zeros(num)
                     completionTime = time.time() - start
+                file.close()
 
                 doneBox()
 
@@ -170,6 +171,7 @@ while (correctInput is False):
                     start = time.time()
                     straight(num)
                     completionTime = time.time() - start
+                file.close()
 
                 doneBox()
 

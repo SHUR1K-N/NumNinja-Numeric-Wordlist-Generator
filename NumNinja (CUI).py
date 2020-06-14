@@ -3,7 +3,7 @@ from colorama import init
 from termcolor import colored
 from tqdm import tqdm
 
-correctInput = False; digitStr = 0; digits = 0; num = 0; nextLine = "\n"
+correctInput = False; digitStr = 0; digits = 0; num = 0
 
 init()
 
@@ -24,29 +24,29 @@ print(colored('''                                   ----------------------------
 ########## Method Elements ###########
 
 def zeros(num):
-    if (YN in ('y', 'YES', 'Y', 'Yes', 'yes', '1')):
+    if (YN == "1"):
         print()
         for i in tqdm(range(num, maxunit + 1), desc="Progress", unit=" numbers", unit_scale=1):
             file.write((digitStr + "\n") % num)
             num += 1
-    elif (YN in ('n', 'NO', 'N', 'No', 'no', '0')):
+    elif (YN == "2"):
         while (num <= maxunit):
             file.write((digitStr + "\n") % num)
             num += 1
-    return num
+    return(num)
 
 
 def straight(num):
-    if (YN in ('y', 'YES', 'Y', 'Yes', 'yes', '1')):
+    if (YN == "1"):
         print()
         for i in tqdm(range(num, maxunit + 1), desc="Progress", unit=" numbers", unit_scale=1):
             file.write("%d\n" % num)
             num += 1
-    elif (YN in ('n', 'NO', 'N', 'No', 'no', '0')):
+    elif (YN == "2"):
         while (num <= maxunit):
             file.write("%d\n" % num)
             num += 1
-    return num
+    return(num)
 
 
 ############### Main ###############
@@ -62,14 +62,16 @@ while (correctInput is False):
 
             print("\nMethods:-")
             print("1. Leading Zeros\n2. Staightforward")
-            method = int(input("\nSelect method number: ") or "2")
+            method = int(input("\nSelect method number (Default = Straightforward): ") or "2")
             print("")
             if (method == 1):
                 digits = int(input("Enter the number of digits: "))
                 digitStr = ("%0")
                 digitStr += ("%d" % digits)
                 digitStr += ("d")
-                YN = str(input("Show progress? (slower): ") or "no")
+                print("\nShow progress?")
+                print("1. Yes (slower)\n2. No (faster)")
+                YN = input("\nSelect option number (Default = No): ") or "2"
 
                 num = minunit
                 genunit = maxunit - minunit
@@ -84,6 +86,7 @@ while (correctInput is False):
                     start = time.time()
                     zeros(num)
                     completionTime = time.time() - start
+                file.close()
                 print("\n\nThe task completed successfully in %f seconds. (at ~%d lines/sec)" % (completionTime, genunit // completionTime))
                 print("Press any key to exit.")
                 input()
@@ -92,7 +95,9 @@ while (correctInput is False):
                 break
 
             elif (method == 2):
-                YN = str(input("Show progress? (slower): ") or "no")
+                print("\nShow progress?")
+                print("1. Yes (slower)\n2. No (faster)")
+                YN = input("\nSelect option number (Default = No): ") or "2"
                 if maxunit > minunit:
 
                     num = minunit
@@ -108,6 +113,7 @@ while (correctInput is False):
                         start = time.time()
                         straight(num)
                         completionTime = time.time() - start
+                    file.close()
                     print("\n\nThe task completed successfully in %f seconds. (at ~%d lines/sec)" % (completionTime, genunit // completionTime))
                     print("Press any key to exit.")
                     input()
