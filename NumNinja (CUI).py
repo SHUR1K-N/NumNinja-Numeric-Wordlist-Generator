@@ -3,7 +3,7 @@ from colorama import init
 from termcolor import colored
 from tqdm import tqdm
 
-loopFlag = False; digitStr = 0; digits = 0; num = 0; nextLine = "\n"
+correctInput = False; digitStr = 0; digits = 0; num = 0; nextLine = "\n"
 
 init()
 
@@ -51,7 +51,7 @@ def straight(num):
 
 ############### Main ###############
 
-while (loopFlag is False):
+while (correctInput is False):
     try:
         minunit = int(input("\nEnter the minimum value (Default = zero): ") or '0')
         maxunit = int(input("Enter the maximum value: "))
@@ -60,8 +60,9 @@ while (loopFlag is False):
             Output = str(input("Enter output folder (Default = working folder):") or "./")
             Output += "/"
 
-            print("\nSelect method:-")
-            method = int(input("1. Leading Zeros 2. Staightforward: "))
+            print("\nMethods:-")
+            print("1. Leading Zeros\n2. Staightforward")
+            method = int(input("\nSelect method number: ") or "2")
             print("")
             if (method == 1):
                 digits = int(input("Enter the number of digits: "))
@@ -77,17 +78,18 @@ while (loopFlag is False):
 
                 print("\nNumber of lines that will be generated: %d" % genunit)
 
+                print("\nWorking...", end='')
+
                 with open(Output, '+w') as file:
                     start = time.time()
                     zeros(num)
                     completionTime = time.time() - start
-                print("\nThe task completed successfully in %f seconds. (at ~%d lines/sec)" % (completionTime, genunit // completionTime))
+                print("\n\nThe task completed successfully in %f seconds. (at ~%d lines/sec)" % (completionTime, genunit // completionTime))
                 print("Press any key to exit.")
                 input()
 
-                loopFlag = True
-
                 os._exit()
+                break
 
             elif (method == 2):
                 YN = str(input("Show progress? (slower): ") or "no")
@@ -100,17 +102,18 @@ while (loopFlag is False):
 
                     print("\nNumber of lines that will be generated: %d" % genunit)
 
+                    print("\nWorking...", end='')
+
                     with open(Output, '+w') as file:
                         start = time.time()
                         straight(num)
                         completionTime = time.time() - start
-                    print("\nThe task completed successfully in %f seconds. (at ~%d lines/sec)" % (completionTime, genunit // completionTime))
+                    print("\n\nThe task completed successfully in %f seconds. (at ~%d lines/sec)" % (completionTime, genunit // completionTime))
                     print("Press any key to exit.")
                     input()
 
-                    loopFlag = True
-
                     os._exit()
+                    break
 
         elif (minunit == maxunit):
             print("\nThe minimum value cannot be equal to the maximum value.")
@@ -120,3 +123,4 @@ while (loopFlag is False):
     except:
         print(e)
         print("\nOne of more of the inputs are invalid. This can happen when any spaces or other characters have been entered instead of numbers. Please try again.")
+        continue

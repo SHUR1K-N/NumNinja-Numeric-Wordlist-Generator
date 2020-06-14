@@ -3,7 +3,7 @@ from tkinter import *
 from tkinter import filedialog, messagebox
 from tqdm import tqdm, tqdm_gui
 
-loopFlag = False; digitStr = 0; digits = 0; num = 0
+correctInput = False; digitStr = 0; digits = 0; num = 0
 minunit = 0; maxunit = 0; YN = 0
 
 
@@ -90,7 +90,7 @@ def exitMeta():
 
 ############### Main ###############
 
-while (loopFlag is False):
+while (correctInput is False):
 
     root = Tk()
 
@@ -159,9 +159,8 @@ while (loopFlag is False):
 
                 doneBox()
 
-                loopFlag = True
-
                 os._exit(0)
+                break
 
             elif (method == 2):
                 num = minunit
@@ -174,9 +173,8 @@ while (loopFlag is False):
 
                 doneBox()
 
-                loopFlag = True
-
                 os._exit(0)
+                break
 
         elif (maxunit < minunit):
             errorGreater()
@@ -185,3 +183,4 @@ while (loopFlag is False):
     except:
         #print(e)
         errorInvalid()
+        continue
