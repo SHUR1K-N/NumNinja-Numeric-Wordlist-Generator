@@ -4,18 +4,18 @@ from tkinter import filedialog, messagebox
 from tqdm import tqdm, tqdm_gui
 
 correctInput = False; digitStr = 0; digits = 0; num = 0
-minunit = 0; maxunit = 0; YN = 0
+minunit = 0; maxunit = 0; progressPrompt = 0
 
 
 ########## Method Elements ###########
 
 def zeros(num):
-    if (YN == "1"):
+    if (progressPrompt == "1"):
         print()
         for i in tqdm(range(num, maxunit + 1), desc="Progress", unit=" numbers", unit_scale=1):
             file.write((digitStr + "\n") % num)
             num += 1
-    elif (YN == "2"):
+    elif (progressPrompt == "2"):
         while (num <= maxunit):
             file.write((digitStr + "\n") % num)
             num += 1
@@ -23,12 +23,12 @@ def zeros(num):
 
 
 def straight(num):
-    if (YN == "1"):
+    if (progressPrompt == "1"):
         print()
         for i in tqdm(range(num, maxunit + 1), desc="Progress", unit=" numbers", unit_scale=1):
             file.write("%d\n" % num)
             num += 1
-    elif (YN == "2"):
+    elif (progressPrompt == "2"):
         while (num <= maxunit):
             file.write("%d\n" % num)
             num += 1
@@ -97,7 +97,7 @@ while (correctInput is False):
     minunit = IntVar()
     maxunit = IntVar()
     method = IntVar()
-    YN = IntVar()
+    progressPrompt = IntVar()
     output = StringVar()
     digits = IntVar()
 
@@ -124,7 +124,7 @@ while (correctInput is False):
     dig = Entry(root, justify=CENTER, width=4, textvariable=digits)
     dig.place(x=200, y=81, height=25, width=30)
 
-    Checkbutton(root, text="Show progress (slower)", variable=YN) .place(x=12, y=190)
+    Checkbutton(root, text="Show progress (slower)", variable=progressPrompt) .place(x=12, y=190)
 
     Entry(root, justify=CENTER, width=55, textvariable=output) .place(x=12, y=150, height=25)
     Button(text="Browse", width=10, command=browse_button) .place(x=353, y=150, height=25)
@@ -138,7 +138,7 @@ while (correctInput is False):
         maxunit = maxunit.get()
         method = method.get()
         digits = digits.get()
-        YN = YN.get()
+        progressPrompt = progressPrompt.get()
         output = output.get()
 
         output += "./"

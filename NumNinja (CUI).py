@@ -24,12 +24,12 @@ print(colored('''                                   ----------------------------
 ########## Method Elements ###########
 
 def zeros(num):
-    if (YN == "1"):
+    if (progressPrompt == "1"):
         print()
         for i in tqdm(range(num, maxunit + 1), desc="Progress", unit=" numbers", unit_scale=1):
             file.write((digitStr + "\n") % num)
             num += 1
-    elif (YN == "2"):
+    elif (progressPrompt == "2"):
         while (num <= maxunit):
             file.write((digitStr + "\n") % num)
             num += 1
@@ -37,12 +37,12 @@ def zeros(num):
 
 
 def straight(num):
-    if (YN == "1"):
+    if (progressPrompt == "1"):
         print()
         for i in tqdm(range(num, maxunit + 1), desc="Progress", unit=" numbers", unit_scale=1):
             file.write("%d\n" % num)
             num += 1
-    elif (YN == "2"):
+    elif (progressPrompt == "2"):
         while (num <= maxunit):
             file.write("%d\n" % num)
             num += 1
@@ -71,7 +71,7 @@ while (correctInput is False):
                 digitStr += ("d")
                 print("\nShow progress?")
                 print("1. Yes (slower)\n2. No (faster)")
-                YN = input("\nSelect option number (Default = No): ") or "2"
+                progressPrompt = input("\nSelect option number (Default = No): ") or "2"
 
                 num = minunit
                 genunit = maxunit - minunit
@@ -97,7 +97,7 @@ while (correctInput is False):
             elif (method == 2):
                 print("\nShow progress?")
                 print("1. Yes (slower)\n2. No (faster)")
-                YN = input("\nSelect option number (Default = No): ") or "2"
+                progressPrompt = input("\nSelect option number (Default = No): ") or "2"
                 if maxunit > minunit:
 
                     num = minunit
