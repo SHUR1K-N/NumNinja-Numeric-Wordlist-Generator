@@ -10,29 +10,27 @@ minunit = 0; maxunit = 0; progressPrompt = 0
 ########## Method Elements ###########
 
 def zeros(num):
-    if (progressPrompt == "1"):
+    if (progressPrompt == 1):
         print()
-        for i in tqdm(range(num, maxunit + 1), desc="Progress", unit=" numbers", unit_scale=1):
+        for i in tqdm_gui(range(num, maxunit + 1), desc="Progress: ", unit=" numbers", unit_scale=1):
             file.write((digitStr + "\n") % num)
             num += 1
-    elif (progressPrompt == "2"):
+    elif (progressPrompt == 0):
         while (num <= maxunit):
             file.write((digitStr + "\n") % num)
             num += 1
-    return(num)
 
 
 def straight(num):
-    if (progressPrompt == "1"):
+    if (progressPrompt == 1):
         print()
-        for i in tqdm(range(num, maxunit + 1), desc="Progress", unit=" numbers", unit_scale=1):
+        for i in tqdm_gui(range(num, maxunit + 1), desc="Progress: ", unit=" numbers", unit_scale=1):
             file.write("%d\n" % num)
             num += 1
-    elif (progressPrompt == "2"):
+    elif (progressPrompt == 0):
         while (num <= maxunit):
             file.write("%d\n" % num)
             num += 1
-    return(num)
 
 
 ############## GUI Elements ##############
@@ -114,22 +112,22 @@ while (correctInput is False):
     Label(root, text="Minimum value: ").place(x=43, y=12)
     Entry(root, justify=CENTER, width=25, textvariable=minunit).place(x=12, y=35, height=25)
 
-    Label(root, text="Maximum value: ") .place(x=307, y=12)
-    Entry(root, justify=CENTER, width=25, textvariable=maxunit) .place(x=275, y=35, height=25)
+    Label(root, text="Maximum value: ").place(x=307, y=12)
+    Entry(root, justify=CENTER, width=25, textvariable=maxunit).place(x=275, y=35, height=25)
 
-    Leading = Radiobutton(root, text="Leading Zeros Method", value=1, variable=method, command=checkDigits) .place(x=12, y=80)
-    Straightforward = Radiobutton(root, text="Straightforward Method", value=2, variable=method, command=checkDigits) .place(x=12, y=110)
+    Leading = Radiobutton(root, text="Leading Zeros Method", value=1, variable=method, command=checkDigits).place(x=12, y=80)
+    Straightforward = Radiobutton(root, text="Straightforward Method", value=2, variable=method, command=checkDigits).place(x=12, y=110)
 
-    Label(root, text="digits") .place(x=232, y=83)
+    Label(root, text="digits").place(x=232, y=83)
     dig = Entry(root, justify=CENTER, width=4, textvariable=digits)
     dig.place(x=200, y=81, height=25, width=30)
 
-    Checkbutton(root, text="Show progress (slower)", variable=progressPrompt) .place(x=12, y=190)
+    Checkbutton(root, text="Show progress (slower)", variable=progressPrompt).place(x=12, y=190)
 
-    Entry(root, justify=CENTER, width=55, textvariable=output) .place(x=12, y=150, height=25)
-    Button(text="Browse", width=10, command=browse_button) .place(x=353, y=150, height=25)
+    Entry(root, justify=CENTER, width=55, textvariable=output).place(x=12, y=150, height=25)
+    Button(text="Browse", width=10, command=browse_button).place(x=353, y=150, height=25)
 
-    Button(root, text="Start", width=10, command=root.destroy) .place(x=175, y=230, height=25)
+    Button(root, text="Start", width=10, command=root.destroy).place(x=175, y=230, height=25)
 
     root.mainloop()
 
@@ -160,8 +158,9 @@ while (correctInput is False):
 
                 doneBox()
 
+                correctInput = True
+
                 os._exit(0)
-                break
 
             elif (method == 2):
                 num = minunit
@@ -175,8 +174,9 @@ while (correctInput is False):
 
                 doneBox()
 
+                correctInput = True
+
                 os._exit(0)
-                break
 
         elif (maxunit < minunit):
             errorGreater()
@@ -185,4 +185,3 @@ while (correctInput is False):
     except:
         #print(e)
         errorInvalid()
-        continue
