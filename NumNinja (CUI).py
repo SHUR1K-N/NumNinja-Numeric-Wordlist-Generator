@@ -25,7 +25,6 @@ print(colored('''                                   ----------------------------
 
 def zeros(num):
     if (progressPrompt == "1"):
-        print()
         for i in tqdm(range(num, maxunit + 1), desc="Progress", unit=" numbers", unit_scale=1):
             file.write((digitStr + "\n") % num)
             num += 1
@@ -33,12 +32,11 @@ def zeros(num):
         while (num <= maxunit):
             file.write((digitStr + "\n") % num)
             num += 1
-    return(num)
+    return
 
 
 def straight(num):
     if (progressPrompt == "1"):
-        print()
         for i in tqdm(range(num, maxunit + 1), desc="Progress", unit=" numbers", unit_scale=1):
             file.write("%d\n" % num)
             num += 1
@@ -46,7 +44,7 @@ def straight(num):
         while (num <= maxunit):
             file.write("%d\n" % num)
             num += 1
-    return(num)
+    return
 
 
 ############### Main ###############
