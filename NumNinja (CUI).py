@@ -3,7 +3,7 @@ from colorama import init
 from termcolor import colored
 from tqdm import tqdm
 
-correctInput = False; digitStr = 0; digits = 0; num = 0
+correctInput = False
 
 init()
 
