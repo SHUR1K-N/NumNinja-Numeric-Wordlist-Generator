@@ -3,8 +3,7 @@ from tkinter import *
 from tkinter import filedialog, messagebox
 from tqdm import tqdm, tqdm_gui
 
-correctInput = False; digitStr = 0; digits = 0; num = 0
-minunit = 0; maxunit = 0; progressPrompt = 0
+correctInput = False
 
 
 ########## Method Elements ###########
@@ -148,9 +147,9 @@ while (correctInput is False):
                 digitStr += ("d")
 
                 num = minunit
-                i = output + "%d to %d.txt" % (num, maxunit)
+                output += ((digitStr) % num) + " to " + ((digitStr) % maxunit) + ".txt"
 
-                with open(i, '+w') as file:
+                with open(output, '+w') as file:
                     start = time.time()
                     zeros(num)
                     completionTime = time.time() - start
@@ -164,9 +163,9 @@ while (correctInput is False):
 
             elif (method == 2):
                 num = minunit
-                i = output + "%d to %d.txt" % (num, maxunit)
+                output += "%d to %d.txt" % (num, maxunit)
 
-                with open(i, '+w') as file:
+                with open(output, '+w') as file:
                     start = time.time()
                     straight(num)
                     completionTime = time.time() - start
