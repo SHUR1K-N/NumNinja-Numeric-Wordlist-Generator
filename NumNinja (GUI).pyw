@@ -87,100 +87,102 @@ def exitMeta():
 
 ############### Main ###############
 
-while (correctInput is False):
+if __name__ == "__main__":
 
-    root = Tk()
+    while (correctInput is False):
 
-    minunit = IntVar()
-    maxunit = IntVar()
-    method = IntVar()
-    progressPrompt = IntVar()
-    output = StringVar()
-    digits = IntVar()
+        root = Tk()
 
-    method.set(1)
+        minunit = IntVar()
+        maxunit = IntVar()
+        method = IntVar()
+        progressPrompt = IntVar()
+        output = StringVar()
+        digits = IntVar()
 
-    root.resizable(0, 0)
-    root.geometry("441x260+800+400")
-    root.attributes('-topmost', True)
-    root.after_idle(root.attributes, '-topmost', False)
-    root.iconbitmap("shur1ken.ico")
-    root.title("NumNinja: The Number Dictionary Generator")
-    root.protocol('WM_DELETE_WINDOW', exitMeta)
+        method.set(1)
 
-    Label(root, text="Minimum value: ").place(x=43, y=12)
-    Entry(root, justify=CENTER, width=25, textvariable=minunit).place(x=12, y=35, height=25)
+        root.resizable(0, 0)
+        root.geometry("441x260+800+400")
+        root.attributes('-topmost', True)
+        root.after_idle(root.attributes, '-topmost', False)
+        root.iconbitmap("shur1ken.ico")
+        root.title("NumNinja: The Number Dictionary Generator")
+        root.protocol('WM_DELETE_WINDOW', exitMeta)
 
-    Label(root, text="Maximum value: ").place(x=307, y=12)
-    Entry(root, justify=CENTER, width=25, textvariable=maxunit).place(x=275, y=35, height=25)
+        Label(root, text="Minimum value: ").place(x=43, y=12)
+        Entry(root, justify=CENTER, width=25, textvariable=minunit).place(x=12, y=35, height=25)
 
-    Leading = Radiobutton(root, text="Leading Zeros Method", value=1, variable=method, command=checkDigits).place(x=12, y=80)
-    Straightforward = Radiobutton(root, text="Straightforward Method", value=2, variable=method, command=checkDigits).place(x=12, y=110)
+        Label(root, text="Maximum value: ").place(x=307, y=12)
+        Entry(root, justify=CENTER, width=25, textvariable=maxunit).place(x=275, y=35, height=25)
 
-    Label(root, text="digits").place(x=232, y=83)
-    dig = Entry(root, justify=CENTER, width=4, textvariable=digits)
-    dig.place(x=200, y=81, height=25, width=30)
+        Leading = Radiobutton(root, text="Leading Zeros Method", value=1, variable=method, command=checkDigits).place(x=12, y=80)
+        Straightforward = Radiobutton(root, text="Straightforward Method", value=2, variable=method, command=checkDigits).place(x=12, y=110)
 
-    Checkbutton(root, text="Show progress (slower)", variable=progressPrompt).place(x=12, y=190)
+        Label(root, text="digits").place(x=232, y=83)
+        dig = Entry(root, justify=CENTER, width=4, textvariable=digits)
+        dig.place(x=200, y=81, height=25, width=30)
 
-    Entry(root, justify=CENTER, width=55, textvariable=output).place(x=12, y=150, height=25)
-    Button(text="Browse", width=10, command=browse_button).place(x=353, y=150, height=25)
+        Checkbutton(root, text="Show progress (slower)", variable=progressPrompt).place(x=12, y=190)
 
-    Button(root, text="Start", width=10, command=root.destroy).place(x=175, y=230, height=25)
+        Entry(root, justify=CENTER, width=55, textvariable=output).place(x=12, y=150, height=25)
+        Button(text="Browse", width=10, command=browse_button).place(x=353, y=150, height=25)
 
-    root.mainloop()
+        Button(root, text="Start", width=10, command=root.destroy).place(x=175, y=230, height=25)
 
-    try:
-        minunit = minunit.get()
-        maxunit = maxunit.get()
-        method = method.get()
-        digits = digits.get()
-        progressPrompt = progressPrompt.get()
-        output = output.get()
+        root.mainloop()
 
-        output += "./"
+        try:
+            minunit = minunit.get()
+            maxunit = maxunit.get()
+            method = method.get()
+            digits = digits.get()
+            progressPrompt = progressPrompt.get()
+            output = output.get()
 
-        if (maxunit > minunit):
-            if (method == 1):
-                digitStr = ("%0")
-                digitStr += ("%d" % digits)
-                digitStr += ("d")
+            output += "./"
 
-                num = minunit
-                output += ((digitStr) % num) + " to " + ((digitStr) % maxunit) + ".txt"
+            if (maxunit > minunit):
+                if (method == 1):
+                    digitStr = ("%0")
+                    digitStr += ("%d" % digits)
+                    digitStr += ("d")
 
-                with open(output, '+w') as file:
-                    start = time.time()
-                    zeros(num)
-                    completionTime = time.time() - start
-                file.close()
+                    num = minunit
+                    output += ((digitStr) % num) + " to " + ((digitStr) % maxunit) + ".txt"
 
-                doneBox()
+                    with open(output, '+w') as file:
+                        start = time.time()
+                        zeros(num)
+                        completionTime = time.time() - start
+                    file.close()
 
-                correctInput = True
+                    doneBox()
 
-                os._exit(0)
+                    correctInput = True
 
-            elif (method == 2):
-                num = minunit
-                output += "%d to %d.txt" % (num, maxunit)
+                    os._exit(0)
 
-                with open(output, '+w') as file:
-                    start = time.time()
-                    straight(num)
-                    completionTime = time.time() - start
-                file.close()
+                elif (method == 2):
+                    num = minunit
+                    output += "%d to %d.txt" % (num, maxunit)
 
-                doneBox()
+                    with open(output, '+w') as file:
+                        start = time.time()
+                        straight(num)
+                        completionTime = time.time() - start
+                    file.close()
 
-                correctInput = True
+                    doneBox()
 
-                os._exit(0)
+                    correctInput = True
 
-        elif (maxunit < minunit):
-            errorGreater()
-        elif (maxunit == minunit):
-            errorEqual()
-    except:
-        #print(e)
-        errorInvalid()
+                    os._exit(0)
+
+            elif (maxunit < minunit):
+                errorGreater()
+            elif (maxunit == minunit):
+                errorEqual()
+        except:
+            #print(e)
+            errorInvalid()
