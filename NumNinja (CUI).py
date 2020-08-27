@@ -26,27 +26,23 @@ def printBanner():
 
 ########## Method Elements ###########
 
-def zeros(num):
+def zeros():
     if (progressPrompt == "1"):
-        for i in tqdm(range(num, maxunit + 1), desc="Progress", unit=" numbers", unit_scale=1):
-            file.write((digitStr + "\n") % num)
-            num += 1
+        for number in tqdm(range(minunit, maxunit + 1), desc="Progress", unit=" numbers", unit_scale=1):
+            file.write((digitStr + "\n") % number)
     elif (progressPrompt == "2"):
-        while (num <= maxunit):
-            file.write((digitStr + "\n") % num)
-            num += 1
+        for number in range(minunit, maxunit + 1):
+            file.write((digitStr + "\n") % number)
     return
 
 
-def straight(num):
+def straight():
     if (progressPrompt == "1"):
-        for i in tqdm(range(num, maxunit + 1), desc="Progress", unit=" numbers", unit_scale=1):
-            file.write("%d\n" % num)
-            num += 1
+        for number in tqdm(range(minunit, maxunit + 1), desc="Progress", unit=" numbers", unit_scale=1):
+            file.write(f"{number}\n")
     elif (progressPrompt == "2"):
-        while (num <= maxunit):
-            file.write("%d\n" % num)
-            num += 1
+        for number in range(minunit, maxunit + 1):
+            file.write((digitStr + "\n") % number)
     return
 
 
@@ -61,6 +57,8 @@ if __name__ == "__main__":
             minunit = int(input("\nEnter the minimum value (Default = zero): ") or '0')
             maxunit = int(input("Enter the maximum value: "))
 
+            genunit = maxunit - minunit
+
             if maxunit > minunit:
                 Output = str(input("Enter output folder (Default = working folder):") or "./")
                 Output += "/"
@@ -69,71 +67,56 @@ if __name__ == "__main__":
                 print("1. Leading Zeros\n2. Staightforward")
                 method = int(input("\nSelect method number (Default = Straightforward): ") or "2")
                 print("")
+
+                digits = int(input("Enter the number of digits: "))
+
                 if (method == 1):
-                    digits = int(input("Enter the number of digits: "))
-                    digitStr = ("%0")
-                    digitStr += ("%d" % digits)
-                    digitStr += ("d")
-                    print("\nShow progress?")
-                    print("1. Yes (slower)\n2. No (faster)")
-                    progressPrompt = input("\nSelect option number (Default = No): ") or "2"
-
-                    num = minunit
-                    genunit = maxunit - minunit
-
-                    Output += ((digitStr) % num) + " to " + ((digitStr) % maxunit) + ".txt"
-
-                    print("\nNumber of lines that will be generated: %d" % genunit)
-
-                    print("\nWorking...", end='')
-
-                    with open(Output, '+w') as file:
-                        start = time.time()
-                        zeros(num)
-                        completionTime = time.time() - start
-                    file.close()
-                    print("\n\nThe task completed successfully in %f seconds. (at ~%d lines/sec)" % (completionTime, genunit // completionTime))
-                    print("Press any key to exit.")
-                    input()
-
-                    break
+                    digitStr = (f"%0{digits}d")
+                    Output += ((digitStr) % minunit) + " to " + ((digitStr) % maxunit) + ".txt"
 
                 elif (method == 2):
-                    print("\nShow progress?")
-                    print("1. Yes (slower)\n2. No (faster)")
-                    progressPrompt = input("\nSelect option number (Default = No): ") or "2"
-                    if maxunit > minunit:
+                    Output += f"{minunit} to {maxunit}.txt"
 
-                        num = minunit
-                        genunit = maxunit - minunit
+                print("\nShow progress?")
+                print("1. Yes (slower)\n2. No (faster)")
 
-                        Output += "%d to %d.txt" % (num, maxunit)
+                progressPrompt = input("\nSelect option number (Default = No): ") or "2"
 
-                        print("\nNumber of lines that will be generated: %d" % genunit)
+                print(f"\nNumber of lines that will be generated: {genunit}")
 
-                        print("\nWorking...", end='')
+                print("\nWorking...", end='')
 
-                        with open(Output, '+w') as file:
+                if (method == 1):
+                    with open(Output, 'w') as file:
+                        start = time.time()
+                        zeros()
+                        completionTime = time.time() - start
+
+                elif (method == 2):
+                    with open(Output, 'w') as file:
                             start = time.time()
-                            straight(num)
+                            straight()
                             completionTime = time.time() - start
-                        file.close()
-                        print("\n\nThe task completed successfully in %f seconds. (at ~%d lines/sec)" % (completionTime, genunit // completionTime))
-                        print("Press any key to exit.")
-                        input()
 
-                        break
+                rate = genunit // completionTime
+                print(f"\n\nThe task completed successfully in {completionTime} seconds. (at ~{rate} lines/sec)")
+                print("Press any key to exit.")
+                input()
+
+                break
 
             elif (minunit == maxunit):
                 print("\nThe minimum value cannot be equal to the maximum value. Please try again.\n")
 
             elif (minunit > maxunit):
                 print("\nThe minimum value cannot be greater than the maximum value. Please try again.\n")
+
         except ZeroDivisionError:
             print("\n\nThe task completed successfully in zero seconds.")
             print("Press any key to exit.")
             input()
             break
+
         except:
             print("\nOne of more of the inputs are invalid. This can happen when any spaces or other characters have been entered instead of numbers. Please try again.\n")
             continue

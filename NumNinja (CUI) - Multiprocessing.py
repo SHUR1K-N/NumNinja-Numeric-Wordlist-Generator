@@ -29,28 +29,28 @@ def printBanner():
 ########## Method Elements ###########
 
 def zeros1(numList, chunkOne, Output, digitStr):
-    with open(Output, 'a+') as file:
+    with open(Output, 'a') as file:
         for number in numList[0:chunkOne]:
             file.write((digitStr + "\n") % number)
     return
 
 
 def zeros2(numList, chunkOne, chunkTwo, Output, digitStr):
-    with open(Output, 'a+') as file:
+    with open(Output, 'a') as file:
         for number in numList[chunkOne:chunkTwo]:
             file.write((digitStr + "\n") % number)
     return
 
 
 def zeros3(numList, chunkTwo, chunkThree, Output, digitStr):
-    with open(Output, 'a+') as file:
+    with open(Output, 'a') as file:
         for number in numList[chunkTwo:chunkThree]:
             file.write((digitStr + "\n") % number)
     return
 
 
 def zeros4(numList, chunkThree, Output, digitStr):
-    with open(Output, 'a+') as file:
+    with open(Output, 'a') as file:
         for number in numList[chunkThree:]:
             file.write((digitStr + "\n") % number)
     return
@@ -77,9 +77,7 @@ if __name__ == "__main__":
                 print("")
                 if (method == 1):
                     digits = int(input("Enter the number of digits: "))
-                    digitStr = ("%0")
-                    digitStr += ("%d" % digits)
-                    digitStr += ("d")
+                    digitStr = (f"%0{digits}d")
                     print("\nShow progress?")
                     print("1. Yes (slower)\n2. No (faster)")
                     progressPrompt = input("\nSelect option number (Default = No): ") or "2"
