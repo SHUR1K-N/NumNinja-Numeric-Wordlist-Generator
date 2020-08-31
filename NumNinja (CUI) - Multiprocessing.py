@@ -1,6 +1,5 @@
 import time
 import multiprocessing
-import threading
 from colorama import init
 from termcolor import colored
 from tqdm import tqdm
@@ -64,7 +63,7 @@ if __name__ == "__main__":
 
     while (correctInput is False):
         try:
-            minunit = int(input("\nEnter the minimum value (Default = zero): ") or '0')
+            minunit = int(input("\nEnter the minimum value (Default = zero): ") or 0)
             maxunit = int(input("Enter the maximum value: "))
 
             if maxunit > minunit:
@@ -72,15 +71,15 @@ if __name__ == "__main__":
                 Output += "/"
 
                 print("\nMethods:-")
-                print("1. Leading Zeros\n2. Staightforward (currently under construction")
-                method = int(input("\nSelect method number (Default = Straightforward): ") or "2")
+                print("1. Leading Zeros\n2. Staightforward (currently under construction)")
+                method = int(input("\nSelect method number: ") or 1)
                 print("")
                 if (method == 1):
                     digits = int(input("Enter the number of digits: "))
                     digitStr = (f"%0{digits}d")
                     print("\nShow progress?")
                     print("1. Yes (slower)\n2. No (faster)")
-                    progressPrompt = input("\nSelect option number (Default = No): ") or "2"
+                    progressPrompt = int(input("\nSelect option number (Default = No): ") or 2)
 
                     genunit = maxunit - minunit
 
@@ -95,7 +94,7 @@ if __name__ == "__main__":
 
                     Output += ((digitStr) % minunit) + " to " + ((digitStr) % maxunit) + ".txt"
 
-                    print("\nNumber of lines that will be generated: %d" % genunit)
+                    print(f"\nNumber of lines that will be generated: {genunit}")
 
                     print("\nWorking...", end='')
 
@@ -116,9 +115,10 @@ if __name__ == "__main__":
                     process4.join()
 
                     completionTime = time.time() - start
+                    rate = genunit // completionTime
 
-                    print("\n\nThe task completed successfully in %f seconds. (at ~%d lines/sec)" % (completionTime, genunit // completionTime))
-                    print("Press any key to exit.")
+                    print(f"\n\nThe task completed successfully in {completionTime} seconds. (at ~{rate} lines/sec)")
+                    print("Press Enter to exit.")
                     input()
 
                     break
@@ -130,7 +130,7 @@ if __name__ == "__main__":
                 print("\nThe minimum value cannot be greater than the maximum value. Please try again.\n")
         except ZeroDivisionError:
             print("\n\nThe task completed successfully in zero seconds.")
-            print("Press any key to exit.")
+            print("Press Enter to exit.")
             input()
             break
         except:

@@ -3,32 +3,30 @@ from tkinter import *
 from tkinter import filedialog, messagebox
 from tqdm import tqdm, tqdm_gui
 
-correctInput = False
-
 
 ########## Method Elements ###########
 
 def zeros(num):
-    if (progressPrompt == 1):
+    if (progressBar == 1):
         print()
         for i in tqdm_gui(range(num, maxunit + 1), desc="Progress: ", unit=" numbers", unit_scale=1):
             file.write((digitStr + "\n") % num)
             num += 1
-    elif (progressPrompt == 0):
+    elif (progressBar == 0):
         while (num <= maxunit):
             file.write((digitStr + "\n") % num)
             num += 1
 
 
 def straight(num):
-    if (progressPrompt == 1):
+    if (progressBar == 1):
         print()
         for i in tqdm_gui(range(num, maxunit + 1), desc="Progress: ", unit=" numbers", unit_scale=1):
-            file.write("%d\n" % num)
+            file.write(f"{num}\n")
             num += 1
-    elif (progressPrompt == 0):
+    elif (progressBar == 0):
         while (num <= maxunit):
-            file.write("%d\n" % num)
+            file.write(f"{num}\n")
             num += 1
 
 
@@ -69,7 +67,7 @@ def errorInvalid():
     error = Tk()
     error.iconbitmap("shur1ken.ico")
     error.withdraw()
-    messagebox.showerror("Error", "One of more of the inputs are invalid. This can happen when any spaces or other characters have been entered instead of numbers. Please try again.")
+    messagebox.showerror("Error", "One of more of the inputs are invalid. This can happen when any spaces or other characters have been entered instead of numbers, or the specified file path is invalid. Please try again.")
     error.destroy()
 
 
@@ -77,7 +75,7 @@ def doneBox():
     done = Tk()
     done.iconbitmap("shur1ken.ico")
     done.withdraw()
-    messagebox.showinfo("Done!", "The task completed successfully in %f seconds." % completionTime)
+    messagebox.showinfo("Done!", f"The task completed successfully in {completionTime} seconds.")
     done.destroy()
 
 
@@ -89,14 +87,14 @@ def exitMeta():
 
 if __name__ == "__main__":
 
-    while (correctInput is False):
+    while (True):
 
         root = Tk()
 
         minunit = IntVar()
         maxunit = IntVar()
         method = IntVar()
-        progressPrompt = IntVar()
+        progressBar = IntVar()
         output = StringVar()
         digits = IntVar()
 
@@ -123,7 +121,7 @@ if __name__ == "__main__":
         dig = Entry(root, justify=CENTER, width=4, textvariable=digits)
         dig.place(x=200, y=81, height=25, width=30)
 
-        Checkbutton(root, text="Show progress (slower)", variable=progressPrompt).place(x=12, y=190)
+        Checkbutton(root, text="Show progress (slower)", variable=progressBar).place(x=12, y=190)
 
         Entry(root, justify=CENTER, width=55, textvariable=output).place(x=12, y=150, height=25)
         Button(text="Browse", width=10, command=browse_button).place(x=353, y=150, height=25)
@@ -137,16 +135,14 @@ if __name__ == "__main__":
             maxunit = maxunit.get()
             method = method.get()
             digits = digits.get()
-            progressPrompt = progressPrompt.get()
+            progressBar = progressBar.get()
             output = output.get()
 
             output += "./"
 
             if (maxunit > minunit):
                 if (method == 1):
-                    digitStr = ("%0")
-                    digitStr += ("%d" % digits)
-                    digitStr += ("d")
+                    digitStr = (f"%0{digits}d")
 
                     num = minunit
                     output += ((digitStr) % num) + " to " + ((digitStr) % maxunit) + ".txt"
@@ -165,7 +161,7 @@ if __name__ == "__main__":
 
                 elif (method == 2):
                     num = minunit
-                    output += "%d to %d.txt" % (num, maxunit)
+                    output += f"{num} to {maxunit}.txt"
 
                     with open(output, '+w') as file:
                         start = time.time()
@@ -175,7 +171,7 @@ if __name__ == "__main__":
 
                     doneBox()
 
-                    correctInput = True
+                    break
 
                     os._exit(0)
 

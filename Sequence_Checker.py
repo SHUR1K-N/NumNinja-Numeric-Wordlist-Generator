@@ -1,4 +1,5 @@
 import re
+
 try:
     while(True):
         drag = input("Drag and drop .txt file here: ")
@@ -16,5 +17,6 @@ try:
                     break
         print(f"Continuity check for \"{output[0]}\": {continuous}\n")
 except:
+    # print(e)
     print("\nPress Enter to exit...")
     input()
