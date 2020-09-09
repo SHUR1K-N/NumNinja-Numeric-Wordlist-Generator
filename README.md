@@ -12,7 +12,7 @@ A super-high speed number dictionary generator (2M+ lines per second), that take
 This project was created in Python, and has both versions — graphical UI and console UI.
 
 ## Optimization
-The extremely high integer-generating speed is owed to the implementation of multiprocessing in this program (the regular version of the program works flawlessly, but the much faster multiprocessing version is still an active work in progress)
+The extremely high integer-generating speed is owed to the implementation of multiprocessing in this program (the regular version of the program works flawlessly, but the much faster multiprocessing version is still an active work in progress).
 
 ## Dependencies to "pip install"
 
