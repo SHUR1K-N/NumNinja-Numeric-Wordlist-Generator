@@ -15,7 +15,6 @@ This project was created in Python, and has both versions — graphical UI and c
 The extremely high integer-generating speed is owed to the implementation of multiprocessing in this program (the regular version of the program works flawlessly, but the much faster multiprocessing version is still an active work in progress).
 
 ## Dependencies to "pip install"
-
 - **tqdm** (for GUI progress bars)
 - **tkinter** (for GUI elements)
 - **colorama** (for colors)
