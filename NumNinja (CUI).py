@@ -1,9 +1,9 @@
 import time; import os
-from colorama import init
+import colorama
 from termcolor import colored
 from tqdm import tqdm
 
-init()   # Initilizing colors
+colorama.init()
 
 BANNER1 = colored('''
                      ███▄    █  █    ██  ███▄ ▄███▓ ███▄    █  ██▓ ███▄    █  ▄▄▄██▀▀▀▄▄▄
