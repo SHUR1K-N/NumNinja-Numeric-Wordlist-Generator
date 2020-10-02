@@ -1,7 +1,7 @@
 import time; import os
-import colorama
-from termcolor import colored
 from tqdm import tqdm
+from termcolor import colored
+import colorama
 
 colorama.init()
 
@@ -156,6 +156,10 @@ if __name__ == "__main__":
             input()
     except KeyboardInterrupt:
         clrscr()
+        try:
+            file.close()
+        except:
+            pass
         print("\nCTRL ^C\n\nThrew a wrench in the works.")
         print("Press Enter to exit.")
         input()

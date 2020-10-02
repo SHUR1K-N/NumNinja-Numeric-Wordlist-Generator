@@ -1,8 +1,10 @@
-import time
 import multiprocessing
-from colorama import init
-from termcolor import colored
+import time; import os
 from tqdm import tqdm
+from termcolor import colored
+import colorama
+
+colorama.init()
 
 correctInput = False
 
@@ -21,38 +23,45 @@ BANNER3 = colored('''                                   ------------------------
 
 
 def printBanner():
-    init()
     print(BANNER1), print(BANNER2), print(BANNER3)
 
 
 ########## Method Elements ###########
 
 def zeros1(numList, chunkOne, Output, digitStr):
-    with open(Output, 'a') as file:
-        for number in numList[0:chunkOne]:
-            file.write((digitStr + "\n") % number)
-    return
+    try:
+        with open(Output, 'a') as file:
+            for number in numList[0:chunkOne]:
+                file.write((digitStr + "\n") % number)
+    except KeyboardInterrupt:
+        raise KeyboardInterrupt
 
 
 def zeros2(numList, chunkOne, chunkTwo, Output, digitStr):
-    with open(Output, 'a') as file:
-        for number in numList[chunkOne:chunkTwo]:
-            file.write((digitStr + "\n") % number)
-    return
+    try:
+        with open(Output, 'a') as file:
+            for number in numList[chunkOne:chunkTwo]:
+                file.write((digitStr + "\n") % number)
+    except KeyboardInterrupt:
+        raise KeyboardInterrupt
 
 
 def zeros3(numList, chunkTwo, chunkThree, Output, digitStr):
-    with open(Output, 'a') as file:
-        for number in numList[chunkTwo:chunkThree]:
-            file.write((digitStr + "\n") % number)
-    return
+    try:
+        with open(Output, 'a') as file:
+            for number in numList[chunkTwo:chunkThree]:
+                file.write((digitStr + "\n") % number)
+    except KeyboardInterrupt:
+        raise KeyboardInterrupt
 
 
 def zeros4(numList, chunkThree, Output, digitStr):
-    with open(Output, 'a') as file:
-        for number in numList[chunkThree:]:
-            file.write((digitStr + "\n") % number)
-    return
+    try:
+        with open(Output, 'a') as file:
+            for number in numList[chunkThree:]:
+                file.write((digitStr + "\n") % number)
+    except KeyboardInterrupt:
+        raise KeyboardInterrupt
 
 
 ############### Main ###############
@@ -133,6 +142,11 @@ if __name__ == "__main__":
             print("Press Enter to exit.")
             input()
             break
+        except KeyboardInterrupt:
+            print("\nCTRL ^C\n\nThrew a wrench in the works.")
+            print("Press Enter to exit.")
+            input()
+            os._exit()
         except:
             print("\nOne of more of the inputs are invalid. This can happen when any spaces or other characters have been entered instead of numbers. Please try again.\n")
             continue
