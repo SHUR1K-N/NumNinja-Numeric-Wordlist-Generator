@@ -1,7 +1,7 @@
-﻿# NumNinja: The Number Dictionary Generator
+﻿# NumNinja: Numeric Dictionary Generator
 
 ## Description & Usage
-A super-high speed number dictionary generator (2M+ lines per second), that takes the following as input:
+A super-high speed numeric dictionary generator (2M+ lines per second), that takes the following as input:
 
 - A custom range of integers to generate within
 - Method (either Leading Zeros or Straightforward)
