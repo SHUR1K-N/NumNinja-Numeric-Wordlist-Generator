@@ -27,7 +27,7 @@ def printBanner():
 
 def zeros():
     if (progressBar == "1"):
-        for number in tqdm(range(minunit, maxunit + 1), desc="Progress", unit=" numbers", unit_scale=1):
+        for number in tqdm(range(minunit, maxunit + 1), desc="Progress", unit=" lines", unit_scale=1):
             file.write((digitStr + "\n") % number)
     elif (progressBar == "2"):
         for number in range(minunit, maxunit + 1):
@@ -36,7 +36,7 @@ def zeros():
 
 def straight():
     if (progressBar == "1"):
-        for number in tqdm(range(minunit, maxunit + 1), desc="Progress", unit=" numbers", unit_scale=1):
+        for number in tqdm(range(minunit, maxunit + 1), desc="Progress", unit=" lines", unit_scale=1):
             file.write(f"{number}\n")
     elif (progressBar == "2"):
         for number in range(minunit, maxunit + 1):

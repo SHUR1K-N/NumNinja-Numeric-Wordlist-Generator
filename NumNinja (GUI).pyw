@@ -9,7 +9,7 @@ from tqdm import tqdm, tqdm_gui
 def zeros(num):
     if (progressBar == 1):
         print()
-        for i in tqdm_gui(range(num, maxunit + 1), desc="Progress: ", unit=" numbers", unit_scale=1):
+        for i in tqdm_gui(range(num, maxunit + 1), desc="Progress: ", unit=" lines", unit_scale=1):
             file.write((digitStr + "\n") % num)
             num += 1
     elif (progressBar == 0):
@@ -21,7 +21,7 @@ def zeros(num):
 def straight(num):
     if (progressBar == 1):
         print()
-        for i in tqdm_gui(range(num, maxunit + 1), desc="Progress: ", unit=" numbers", unit_scale=1):
+        for i in tqdm_gui(range(num, maxunit + 1), desc="Progress: ", unit=" lines", unit_scale=1):
             file.write(f"{num}\n")
             num += 1
     elif (progressBar == 0):
