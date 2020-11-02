@@ -1,0 +1,4 @@
+tqdm 		# for progress bars
+tkinter 	# for GUI elements
+colorama 	# for colors
+termcolor 	# for colors
