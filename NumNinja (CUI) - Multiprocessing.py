@@ -9,21 +9,22 @@ colorama.init()
 correctInput = False
 
 BANNER1 = colored('''
-                     ███▄    █  █    ██  ███▄ ▄███▓ ███▄    █  ██▓ ███▄    █  ▄▄▄██▀▀▀▄▄▄
-                     ██ ▀█   █  ██  ▓██▒▓██▒▀█▀ ██▒ ██ ▀█   █ ▓██▒ ██ ▀█   █    ▒██  ▒████▄
-                    ▓██  ▀█ ██▒▓██  ▒██░▓██    ▓██░▓██  ▀█ ██▒▒██▒▓██  ▀█ ██▒   ░██  ▒██  ▀█▄
-                    ▓██▒  ▐▌██▒▓▓█  ░██░▒██    ▒██ ▓██▒  ▐▌██▒░██░▓██▒  ▐▌██▒▓██▄██▓ ░██▄▄▄▄██
-                    ▒██░   ▓██░▒▒█████▓ ▒██▒   ░██▒▒██░   ▓██░░██░▒██░   ▓██░ ▓███▒   ▓█   ▓██▒
-                    ░ ▒░   ▒ ▒ ░▒▓▒ ▒ ▒ ░ ▒░   ░  ░░ ▒░   ▒ ▒ ░▓  ░ ▒░   ▒ ▒  ▒▓▒▒░   ▒▒   ▓▒█░
-                    ░ ░░   ░ ▒░░░▒░ ░ ░ ░  ░      ░░ ░░   ░ ▒░ ▒ ░░ ░░   ░ ▒░ ▒ ░▒░    ▒   ▒▒ ░
-                       ░   ░ ░  ░░░ ░ ░ ░      ░      ░   ░ ░  ▒ ░   ░   ░ ░  ░ ░ ░    ░   ▒
-                             ░    ░            ░            ░  ░           ░  ░   ░        ░  ░''', 'blue')
-BANNER2 = colored('''                                    NumNinja: The Number Dictionary Generator''', 'red')
-BANNER3 = colored('''                                   -------------------------------------------''', 'blue')
+  ███▄    █  █    ██  ███▄ ▄███▓ ███▄    █  ██▓ ███▄    █  ▄▄▄██▀▀▀▄▄▄
+  ██ ▀█   █  ██  ▓██▒▓██▒▀█▀ ██▒ ██ ▀█   █ ▓██▒ ██ ▀█   █    ▒██  ▒████▄
+ ▓██  ▀█ ██▒▓██  ▒██░▓██    ▓██░▓██  ▀█ ██▒▒██▒▓██  ▀█ ██▒   ░██  ▒██  ▀█▄
+ ▓██▒  ▐▌██▒▓▓█  ░██░▒██    ▒██ ▓██▒  ▐▌██▒░██░▓██▒  ▐▌██▒▓██▄██▓ ░██▄▄▄▄██
+ ▒██░   ▓██░▒▒█████▓ ▒██▒   ░██▒▒██░   ▓██░░██░▒██░   ▓██░ ▓███▒   ▓█   ▓██▒
+ ░ ▒░   ▒ ▒ ░▒▓▒ ▒ ▒ ░ ▒░   ░  ░░ ▒░   ▒ ▒ ░▓  ░ ▒░   ▒ ▒  ▒▓▒▒░   ▒▒   ▓▒█░
+ ░ ░░   ░ ▒░░░▒░ ░ ░ ░  ░      ░░ ░░   ░ ▒░ ▒ ░░ ░░   ░ ▒░ ▒ ░▒░    ▒   ▒▒ ░
+    ░   ░ ░  ░░░ ░ ░ ░      ░      ░   ░ ░  ▒ ░   ░   ░ ░  ░ ░ ░    ░   ▒
+          ░    ░            ░            ░  ░           ░  ░   ░        ░  ░''', 'blue')
+BANNER2 = colored('''             ----------------------------------------------''', 'blue')
+BANNER3 = colored('''             || NumNinja: The Number Dictionary Generator ||''', 'red')
+BANNER4 = colored('''             ----------------------------------------------''', 'blue')
 
 
 def printBanner():
-    print(BANNER1), print(BANNER2), print(BANNER3)
+    print(BANNER1), print(BANNER2), print(BANNER3), print(BANNER4)
 
 
 ########## Method Elements ###########
@@ -114,14 +115,13 @@ if __name__ == "__main__":
 
                     start = time.time()
 
-                    process1.start()
-                    process2.start()
-                    process3.start()
-                    process4.start()
-                    process1.join()
-                    process2.join()
-                    process3.join()
-                    process4.join()
+                    processPool = [process1, process2, process3, process4]
+
+                    for process in processPool:
+                        process.start()
+
+                    for process in processPool:
+                        process.join()
 
                     completionTime = time.time() - start
                     rate = genunit // completionTime
