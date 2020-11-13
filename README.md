@@ -1,7 +1,10 @@
 ﻿# NumNinja: Numeric Dictionary Generator
 
 ## Description & Usage
-A super-high speed numeric dictionary generator (2M+ lines per second), that generates a file with all the integers within a user-specified range, either by the Leading Zeros method; ideal in aiding dictionary attacks performed against a number-based pin system, or if the candidates to be tried are within—say—a specific range of contact numbers (example: if a specific network vendor's numbers start with either the digit 7 or 8, a list consisting of all integers 7000000000 → 8999999999 would be both more efficient and ideal in finding the correct possible candidate, than a list of the 0000000000 → 9999999999 range).
+A super-high speed numeric dictionary generator (2M+ lines per second), that generates a file with all the integers within a user-specified range, either by the Leading Zeros method or Straightforward method; ideal for aiding dictionary attacks performed against a number-based pin system, or if the candidates to be tried are within, say, a specific range of contact or ID numbers.
+
+### Example
+If a specific network vendor's SIM numbers beginning with either the digit 7 or 8, a dictionary consisting of all integers 70000000 — 89999999 would be both more efficient in terms of space and time for finding the correct candidate, than trying a significantly larger dictionary that consists of all integers 00000000 — 99999999.
 
 ## Methods
 ### Leading Zeros Generation
