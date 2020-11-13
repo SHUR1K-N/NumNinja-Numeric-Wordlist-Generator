@@ -11,8 +11,8 @@ A super-high speed numeric dictionary generator (2M+ lines per second), that gen
 ### Example
 If a specific network vendor's SIM numbers beginning with either the digit `7` or `8`, a dictionary consisting of all integers `70000000 — 89999999` would be both more efficient in terms of space and time for finding the correct candidate, than trying a significantly larger dictionary that consists of all integers `00000000 — 99999999`.
 
-## Methods
-### Leading Zeros Generation
+## Generation Methods
+### Leading Zeros
 This method generates integers within the user-defined constraints, **at a *constant* length**, for example:
 
 ```
@@ -31,7 +31,7 @@ This method generates integers within the user-defined constraints, **at a *cons
 10000
 ```
 
-### Straightforward Generation
+### Straightforward
 This method generates integers within the user-defined constraints, **at *incremental* lengths**, for example:
 
 ```
