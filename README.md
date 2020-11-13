@@ -16,18 +16,18 @@ If a specific network vendor's SIM numbers beginning with either the digit `7` o
 This method generates integers within the user-defined constraints, **at a *constant* length**, for example:
 
 ```
-0000
-0001
-0002
+00000
+00001
+00002
 ...
-0068
-0069
+00068
+00069
 ...
-999
-1000
+00999
+01000
 ...
-9998
-9999
+09998
+09999
 10000
 ```
 
