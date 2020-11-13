@@ -3,18 +3,10 @@
 ## Description & Usage
 A super-high speed numeric dictionary generator (2M+ lines per second), that generates a file with all the integers within a user-specified range, either by the Leading Zeros method or Straightforward method; ideal for aiding dictionary attacks performed against a number-based pin system, or if the candidates to be tried are within, say, a specific range of contact or ID numbers.
 
-<div align="left">
-<img src="https://github.com/SHUR1K-N/NumNinja-Number-Dictionary-Generator/blob/master/Images/GUI%20Example.png" >
-<p>Graphical UI</p>
-</div>
-<div align="right">
+<div align="center">
 <img src="https://github.com/SHUR1K-N/NumNinja-Number-Dictionary-Generator/blob/master/Images/CUI%20Example.png" >
-<p>Console UI</p>
+<p>Example Execution</p>
 </div>
-
-GUI             |  CUI
-:-------------------------:|:-------------------------:
-![](https://github.com/SHUR1K-N/NumNinja-Number-Dictionary-Generator/blob/master/Images/CUI%20Example.png)  |  ![](https://github.com/SHUR1K-N/NumNinja-Number-Dictionary-Generator/blob/master/Images/GUI%20Example.png)
 
 ### Example
 If a specific network vendor's SIM numbers beginning with either the digit `7` or `8`, a dictionary consisting of all integers `70000000 — 89999999` would be both more efficient in terms of space and time for finding the correct candidate, than trying a significantly larger dictionary that consists of all integers `00000000 — 99999999`.
@@ -57,8 +49,6 @@ This method generates integers within the user-defined constraints, **at *increm
 9999
 10000
 ```
-
-
 
 This project was created in Python, and comes with a graphical UI version as well.
 
