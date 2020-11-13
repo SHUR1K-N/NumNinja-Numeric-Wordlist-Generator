@@ -124,7 +124,7 @@ if __name__ == "__main__":
                 continue
 
         clrscr()
-        genunit = maxunit - minunit
+        genunit = maxunit - minunit + 1
         print(f"\nNumber of lines that will be generated: {genunit}")
 
         print("\nWorking...", end='')
