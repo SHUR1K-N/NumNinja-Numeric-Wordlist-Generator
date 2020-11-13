@@ -1,4 +1,4 @@
-﻿# NumNinja: Numeric Dictionary Generator
+﻿# NumNinja: Number Dictionary Generator
 
 ## Description & Usage
 A super-high speed numeric dictionary generator (up to 2M+ lines per second), that generates a file with all the integers within a user-specified range, either by the Leading Zeros method or Straightforward method; ideal for aiding dictionary attacks performed against a number-based pin system, or if the candidates to be tried are within, say, a specific range of contact or ID numbers.
@@ -53,7 +53,7 @@ Generates integers within the user-defined constraints, **at *incremental* lengt
 This project was created in Python, and comes with a graphical UI version as well.
 
 ## Optimization
-The extremely high integer-generation speeds are owed to the implementation of multiprocessing in this program (the regular version of the program is completely functional, but the much faster multiprocessing version is still an active work in progress).
+The extremely high integer generation speed is owed to the implementation of multiprocessing in this program (the regular version of the program is completely functional, but the much faster multiprocessing version is still an active work in progress).
 
 ## Dependencies to PIP-Install
 - **tqdm** (for progress bars)
