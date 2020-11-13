@@ -13,7 +13,7 @@ If a specific network vendor's SIM numbers beginning with either the digit `7` o
 
 ## Generation Methods
 ### Leading Zeros
-This method generates integers within the user-defined constraints, **at a *constant* length**, for example:
+Generates integers within the user-defined constraints, **at a *constant* length**, for example:
 
 ```
 00000
@@ -32,7 +32,7 @@ This method generates integers within the user-defined constraints, **at a *cons
 ```
 
 ### Straightforward
-This method generates integers within the user-defined constraints, **at *incremental* lengths**, for example:
+Generates integers within the user-defined constraints, **at *incremental* lengths**, for example:
 
 ```
 0
