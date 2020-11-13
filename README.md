@@ -7,35 +7,35 @@ A super-high speed numeric dictionary generator (2M+ lines per second), that gen
 ### Leading Zeros Generation
 This method generates integers within the user-defined constraints, **at a *constant* length**, for example:
 
-0000
-0001
-0002
-...
-0068
-0069
-...
-999
-1000
-...
-9998
-9999
+0000  
+0001  
+0002  
+...  
+0068  
+0069  
+...  
+999  
+1000  
+...  
+9998  
+9999  
 10000
 
 ### Straightforward Generation
 This method generates integers within the user-defined constraints, **at *incremental* lengths**, for example:
 
-0 
-1 
-2 
-... 
-68
-69
-... 
-999 
-1000
-... 
-9998
-9999
+0     <br/>
+1     <br/>
+2     <br/>
+...   <br/>
+68    <br/>
+69    <br/>
+...   <br/>
+999   <br/>
+1000  <br/>
+...   <br/>
+9998  <br/>
+9999  <br/>
 10000
 
 <div align="center">
