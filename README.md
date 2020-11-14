@@ -13,7 +13,7 @@ If a specific network vendor's SIM numbers begin with either the digit `7` or `8
 
 ## Generation Methods
 ### Leading Zeros
-Generates integers within the user-defined constraints, **at a *constant* length**, for example:
+Generates integers within the user-defined constraints, **at a *constant* length (also user-defined)**, for example:
 
 ```
 00000
