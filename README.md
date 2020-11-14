@@ -4,7 +4,7 @@
 A super-high speed numeric dictionary generator (up to 2M+ lines per second), that generates a file with all the integers within a user-specified range, either by the Leading Zeros method or Straightforward method; ideal for aiding dictionary attacks performed against a number-based pin system, or if the candidates to be tried are within, say, a specific range of contact or ID numbers.
 
 <div align="center">
-<img src="https://github.com/SHUR1K-N/NumNinja-Number-Dictionary-Generator/blob/master/Images/CUI%20Example.png" >
+<img src="https://raw.githubusercontent.com/SHUR1K-N/NumNinja-Number-Dictionary-Generator/master/Images/CUI%20Example.png" >
 <p>Example Execution</p>
 </div>
 
