@@ -9,7 +9,7 @@ A super-high speed numeric dictionary generator (up to 2M+ lines per second), th
 </div>
 
 ### Example
-If a specific network vendor's SIM numbers begin with either the digit `7` or `8`, a dictionary consisting of all integers `70000000 — 89999999` would be both more efficient in terms of space and time for finding the correct candidate, than trying a significantly larger dictionary that consists of all integers `00000000 — 99999999`.
+If a specific network vendor's SIM numbers begin with either the digit `7` or `8`, a dictionary consisting of all integers `70000000 – 89999999` would be both more efficient in terms of space and time for finding the correct candidate, than trying a significantly larger dictionary that consists of all integers `00000000 – 99999999`.
 
 ## Generation Methods
 ### Leading Zeros
@@ -63,4 +63,4 @@ The extremely high integer generation speed is owed to the implementation of mul
 
 ------------
 
-My website: http://bit.do/SHUR1KN
+My website: https://TheComputerNoob.com
