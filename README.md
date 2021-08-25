@@ -1,4 +1,4 @@
-﻿# NumNinja: Number Dictionary Generator
+﻿# NumNinja: Numeric Wordlist Generator
 
 ## Description & Usage
 A super-high speed numeric dictionary generator (up to 2M+ lines per second), that generates a file with all the integers within a user-specified range, either by the Leading Zeros method or Straightforward method; ideal for aiding dictionary attacks performed against a number-based pin system, or if the candidates to be tried are within, say, a specific range of contact or ID numbers.
