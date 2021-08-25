@@ -105,7 +105,7 @@ if __name__ == "__main__":
         root.attributes('-topmost', True)
         root.after_idle(root.attributes, '-topmost', False)
         root.iconbitmap("shur1ken.ico")
-        root.title("NumNinja: The Number Dictionary Generator")
+        root.title("NumNinja: The Numeric Wordlist Generator")
         root.protocol('WM_DELETE_WINDOW', exitMeta)
 
         Label(root, text="Minimum value: ").place(x=43, y=12)

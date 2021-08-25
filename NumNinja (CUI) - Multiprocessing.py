@@ -18,9 +18,9 @@ BANNER1 = colored('''
  ░ ░░   ░ ▒░░░▒░ ░ ░ ░  ░      ░░ ░░   ░ ▒░ ▒ ░░ ░░   ░ ▒░ ▒ ░▒░    ▒   ▒▒ ░
     ░   ░ ░  ░░░ ░ ░ ░      ░      ░   ░ ░  ▒ ░   ░   ░ ░  ░ ░ ░    ░   ▒
           ░    ░            ░            ░  ░           ░  ░   ░        ░  ░''', 'blue')
-BANNER2 = colored('''             ----------------------------------------------''', 'blue')
-BANNER3 = colored('''             || NumNinja: The Number Dictionary Generator ||''', 'red')
-BANNER4 = colored('''             ----------------------------------------------''', 'blue')
+BANNER2 = colored('''              ----------------------------------------------''', 'blue')
+BANNER3 = colored('''              || NumNinja: The Numeric Wordlist Generator ||''', 'red')
+BANNER4 = colored('''              ----------------------------------------------''', 'blue')
 
 
 def printBanner():
